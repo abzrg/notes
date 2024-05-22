@@ -152,3 +152,86 @@ Refs:
 
 ---
 
+# C/C++
+
+## Compiler Flags
+
+If you run the following in the command-line
+`man gcc | nl | tail -1`,
+you get something more than 20k (in my case: 24136).
+It's none other than the lines of documentation in the [`gcc`]() man page.
+
+The following is a curated (dynamic) list of c-compiler flags I found from stackoverflow and some other places.
+
+- `-std=c17 -pedantic`
+- `-Wall -Wextra`: Essential.
+- `-Wfloat-equal`: Useful because usually testing floating-point numbers for equality is bad.
+- `-Wundef`: Warn if an uninitialized identifier is evaluated in an #if directive.
+- `-Wshadow`: Warn whenever a local variable shadows another local variable, parameter or global variable or whenever a built-in function is shadowed.
+- `-Wpointer-arith`: Warn if anything depends upon the size of a function or of void.
+- `-Wcast-align`: (\*) Warn whenever a pointer is cast such that the required alignment of the target is increased. For example, warn if a char  is cast to an int * on machines where integers can only be accessed at two- or four-byte boundaries.
+- `-Wstrict-prototypes`: Warn if a function is declared or defined without specifying the argument types.
+- `-Wstrict-overflow=5`: Warns about cases where the compiler optimizes based on the assumption that signed overflow does not occur. (The value 5 may be too strict, see the manual page.)
+- `-Wwrite-strings`: (\*) Give string constants the type const char[length] so that copying the address of one into a non-const char  pointer will get a warning.
+- `-Waggregate-return`: Warn if any functions that return structures or unions are defined or called.
+- `-Wcast-qual`: (\*) Warn whenever a pointer is cast to remove a type qualifier from the target type.
+- `-Wswitch-default`: (\*) Warn whenever a switch statement does not have a default case.
+- `-Wswitch-enum`: (\*) Warn whenever a switch statement has an index of enumerated type and lacks a case for one or more of the named codes of that enumeration.
+- `-Wconversion`: (\*) Warn for implicit conversions that may alter a value.
+- `-Wunreachable-code`: (\*) Warn if the compiler detects that code will never be executed.
+- `-Wformat=2`: Extra format checks on printf/scanf functions. [src](https://stackoverflow.com/questions/3375697/what-are-the-useful-gcc-flags-for-c#comment3530351_3376483)
+- `-fsanitize={address,thread,undefined}`: enables the AddressSanitizer, ThreadSanitizer and UndefinedBehaviorSanitizer code sanitizers, respectively. These instrument the program to check for various sorts of errors at runtime. [src](https://stackoverflow.com/a/3376416)
+
+All the flags in a format suitable to be put in a `Makefile`.
+
+```make
+# Nice Flags! https://stackoverflow.com/a/3376483
+# Those marked  sometimes give too many spurious warnings, so I use them on as-needed basis.
+# http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
+CFLAGS := -std=c17 -pedantic
+CFLAGS += -g #-ggdb
+# Essential.
+CFLAGS += -Wall -Wextra
+# Useful because usually testing floating-point numbers for equality is bad.
+CFLAGS += -Wfloat-equal
+# Warn if an uninitialized identifier is evaluated in an #if directive.
+CFLAGS += -Wundef
+# Warn whenever a local variable shadows another local variable, parameter or global variable or whenever a built-in function is shadowed.
+CFLAGS += -Wshadow
+# Warn if anything depends upon the size of a function or of void.
+CFLAGS += -Wpointer-arith
+# * Warn whenever a pointer is cast such that the required alignment of the target is increased. For example, warn if a char  is cast to an int * on machines where integers can only be accessed at two- or four-byte boundaries.
+CFLAGS += -Wcast-align
+# Warn if a function is declared or defined without specifying the argument types.
+CFLAGS += -Wstrict-prototypes
+# Warns about cases where the compiler optimizes based on the assumption that signed overflow does not occur. (The value 5 may be too strict, see the manual page.)
+CFLAGS += -Wstrict-overflow=5
+# * Give string constants the type const char[length] so that copying the address of one into a non-const char  pointer will get a warning.
+CFLAGS += -Wwrite-strings
+# Warn if any functions that return structures or unions are defined or called.
+CFLAGS += -Waggregate-return
+# * Warn whenever a pointer is cast to remove a type qualifier from the target type.
+CFLAGS += -Wcast-qual
+# * Warn whenever a switch statement does not have a default case.
+CFLAGS += -Wswitch-default
+# * Warn whenever a switch statement has an index of enumerated type and lacks a case for one or more of the named codes of that enumeration.
+CFLAGS += -Wswitch-enum
+# * Warn for implicit conversions that may alter a value.
+CFLAGS += -Wconversion
+# * Warn if the compiler detects that code will never be executed.
+CFLAGS += -Wunreachable-code
+# Extra format checks on printf/scanf functions. https://stackoverflow.com/questions/3375697/what-are-the-useful-gcc-flags-for-c#comment3530351_3376483
+CFLAGS += -Wformat=2
+# enables the AddressSanitizer, ThreadSanitizer and UndefinedBehaviorSanitizer code sanitizers, respectively. These instrument the program to check for various sorts of errors at runtime. https://stackoverflow.com/a/3376416
+CFLAGS += -fsanitize={address,thread,undefined}
+```
+
+<!-- }}} -->
+
+### Useful Resources
+
+- [GCC's documentation on Warning Options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html)
+- [Useful GCC Compiler Options](https://gist.github.com/g-berthiaume/74f0485fbba5cc3249eee458c1d0d386)
+
+
+<!-- }}}  END C/C++ -->
