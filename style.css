@@ -1,0 +1,210 @@
+:root {
+  font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+  font-weight: normal;
+  font-style: normal;
+  word-wrap: break-word;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 110%;
+    max-width: 62em;
+  }
+}
+
+p {
+  margin: 1em 0;
+  line-height: 1.5;
+}
+
+a {
+  color: #000066;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+  text-underline-offset: 5px;
+  text-decoration-style: solid;
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  color: black;
+  line-height: 1em;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.2em;
+  margin: 0;
+  margin-top: 1em;
+}
+
+h2 {
+  margin: 2em 0 1em;
+  font-size: 1.5em;
+}
+
+h2.articles {
+  margin-top: 1em;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 1em 0 1em;
+}
+
+h4 {
+  font-size: 0.9em;
+}
+
+h5 {
+  font-size: 0.9em;
+}
+
+h6 {
+  font-size: 0.9em;
+}
+
+hr {
+    margin-top: 2em;
+}
+
+pre {
+  border: 1px solid #222;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 1rem;
+  overflow: auto;
+}
+
+pre table td {
+  padding: 0;
+}
+
+/* The line number cells */
+pre table td:nth-of-type(1) {
+  text-align: center;
+  user-select: none;
+}
+
+pre mark {
+  display: block;
+  background-color: rgba(254, 252, 232, 0.9);
+}
+
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border-spacing: 0;
+  border: 1px solid #ccc;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th,
+td {
+  line-height: 2;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 1px 10px;;
+}
+
+ol, ul {
+  margin: 1em;
+}
+
+ol li ol, ol li ul, ul li ol, ul li ul {
+  margin: 0 2em;
+}
+
+ol li p, ul li p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+
+blockquote {
+  margin-left: 1px;
+  padding-left: 1em;
+  font-style: italic;
+  color: #555;
+  margin: 1.5em 0 1.5em;
+  border-left: solid 2px gray;
+  font-feature-settings: 'zero' 1;
+}
+
+#title-block-header {
+    text-align: center;
+}
+
+table {
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+
+pre {
+    background: #e9e3ff;
+    padding: 10px;
+    /* padding-left: 15px; */
+    border: solid black 1px;
+    broder-radius: 3px;
+}
+
+p > code, h2 > code {
+    padding: 3px;
+    background: #e9e3ff;
+    border-radius: 3px;
+}

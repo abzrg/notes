@@ -1,4 +1,14 @@
-# Git
+---
+title: My Notes
+author: Ali Bozorgzadeh
+lang: en-US
+date: |
+    Last Updated: May 23, 2024
+...
+
+---
+
+# [Git](#git)
 
 ## Diff with no context
 
@@ -17,6 +27,7 @@ git diff -U0
 ```
 
 why? quicker glimpse on what has changed
+
 ## `rebase --interactive/-i`
 
 ### Edit an old commit
@@ -39,8 +50,6 @@ After executing this command, your default editor will open up, and you then jus
 > [!CAUTION]
 > Note that these operations will rewrite history and this can be problematic in collaborative environments.
 So when you're about to force-push your new commits to the remote repository do it with caution.
-## Signing commits with SSH
-
 
 ## Sign Commits (with SSH)
 
@@ -87,7 +96,6 @@ echo "$(git config --get user.email) namespaces=\"git\" $(cat ~/.ssh/<MY_KEY>.pu
 # Use git log --show-signature to view the signature status for the commits:
 ```
 
-
 ### Sign Previous commits
 
 Read [this ](https://safjan.com/git-sign-commit-n-commits-back) article for more details.
@@ -116,7 +124,6 @@ git rebase --continue
 
 # ...
 ```
-
 
 ### Good resources:
 
@@ -150,9 +157,12 @@ Refs:
 1. [1](https://stackoverflow.com/a/6919257/13041067)
 1. [2](https://stackoverflow.com/a/26433550/13041067)
 
+
 ---
 
-# C/C++
+
+# [C/C++](#cc)
+
 
 ## Compiler Flags
 
@@ -226,12 +236,7 @@ CFLAGS += -Wformat=2
 CFLAGS += -fsanitize={address,thread,undefined}
 ```
 
-<!-- }}} -->
-
 ### Useful Resources
 
 - [GCC's documentation on Warning Options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html)
 - [Useful GCC Compiler Options](https://gist.github.com/g-berthiaume/74f0485fbba5cc3249eee458c1d0d386)
-
-
-<!-- }}}  END C/C++ -->
