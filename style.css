@@ -196,15 +196,15 @@ table {
 }
 
 pre {
-    background: #e9e3ff;
+    background: #f8f8f8;
     padding: 10px;
     /* padding-left: 15px; */
-    border: solid black 1px;
+    border: solid lightgray 1px;
     broder-radius: 3px;
 }
 
-p > code, h2 > code {
+p > code, h2 > code, li > code {
     padding: 3px;
-    background: #e9e3ff;
+    background: #f4f4f4;
     border-radius: 3px;
 }
