@@ -208,3 +208,9 @@ p > code, h2 > code, li > code {
     background: #f4f4f4;
     border-radius: 3px;
 }
+
+/* Don't draw border for code blocks inside block quote */
+blockquote > pre {
+  border: none;
+  background-color: white;
+}
