@@ -131,7 +131,6 @@ git rebase --continue
 - https://safjan.com/git-sign-commit-n-commits-back
 - https://blog.dbrgn.ch/2021/11/16/git-ssh-signatures/
 
-
 ## Undo
 
 ```sh
@@ -157,7 +156,43 @@ Refs:
 1. [1](https://stackoverflow.com/a/6919257/13041067)
 1. [2](https://stackoverflow.com/a/26433550/13041067)
 
+## List staged files
 
+```sh
+# --cached/--staged: Changes between the index and your current HEAD.
+# --name-only: Show only names of changed files.
+git diff --name-only --cached/--staged
+
+# --diff-filter: Only show (filter) staged files that are added (A), modified (M) etc.
+# https://stackoverflow.com/a/2299672
+# --diff-filter=d: only ignore deleted files (https://stackoverflow.com/questions/33610682/git-list-of-staged-files#comment130876160_33610683)
+# you can add --no-pager to prevent the list be shown in a pager
+git diff --name-only --cached --diff-filter=AM
+```
+
+[src](https://stackoverflow.com/a/33610683)
+
+## Get entries from config
+
+```sh
+# To list all the entries (all the key=value)
+git config --local/--global/--system --list/-l
+
+# To list only the keys (names)
+git config --local --list --name-only
+
+
+# In case of failure returns non-zero exit code
+# To query for the hooksPath
+git config --local --get core.hooksPath
+
+# [src](https://stackoverflow.com/a/76535305)
+git config --global --list # to display list of all configurations.
+git config --global --get  # user.name shows your username.
+git config --global --get  # user.email displays your email.
+git config --global credential.helper # verify credentials.
+git config --global gui.recentrepo    # find your recent repo.
+```
 ---
 
 
