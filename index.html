@@ -105,6 +105,13 @@ id="toc-rebase---interactive-i"><code>rebase --interactive/-i</code></a></li>
 <li><a href="#sign-commits-with-ssh" id="toc-sign-commits-with-ssh">Sign
 Commits (with SSH)</a></li>
 <li><a href="#undo" id="toc-undo">Undo</a></li>
+<li><a href="#list-staged-files" id="toc-list-staged-files">List staged
+files</a></li>
+<li><a href="#get-entries-from-config"
+id="toc-get-entries-from-config">Get entries from config</a></li>
+<li><a href="#show-the-head-and-staged-version-of-source"
+id="toc-show-the-head-and-staged-version-of-source">Show the HEAD and
+staged version of source</a></li>
 </ul></li>
 <li><a href="#cc" id="toc-cc">C/C++</a>
 <ul>
@@ -235,6 +242,52 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset HEAD <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code></pre></div>
 <p>Refs: 1. <a href="https://stackoverflow.com/a/6919257/13041067">1</a>
 1. <a href="https://stackoverflow.com/a/26433550/13041067">2</a></p>
+<h2 id="list-staged-files">List staged files</h2>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --cached/--staged: Changes between the index and your current HEAD.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># --name-only: Show only names of changed files.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--name-only</span> <span class="at">--cached</span>/--staged</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --diff-filter: Only show (filter) staged files that are added (A), modified (M) etc.</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># https://stackoverflow.com/a/2299672</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># --diff-filter=d: only ignore deleted files (https://stackoverflow.com/questions/33610682/git-list-of-staged-files#comment130876160_33610683)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># you can add --no-pager to prevent the list be shown in a pager</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--name-only</span> <span class="at">--cached</span> <span class="at">--diff-filter</span><span class="op">=</span>AM</span></code></pre></div>
+<p><a href="https://stackoverflow.com/a/33610683">src</a></p>
+<h2 id="get-entries-from-config">Get entries from config</h2>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To list all the entries (all the key=value)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span>/--global/--system <span class="at">--list</span>/-l</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To list only the keys (names)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span> <span class="at">--list</span> <span class="at">--name-only</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># In case of failure returns non-zero exit code</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># To query for the hooksPath</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span> <span class="at">--get</span> core.hooksPath</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># [src](https://stackoverflow.com/a/76535305)</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span> <span class="co"># to display list of all configurations.</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--get</span>  <span class="co"># user.name shows your username.</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--get</span>  <span class="co"># user.email displays your email.</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper <span class="co"># verify credentials.</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> gui.recentrepo    <span class="co"># find your recent repo.</span></span></code></pre></div>
+<h2 id="show-the-head-and-staged-version-of-source">Show the HEAD and
+staged version of source</h2>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The HEAD version of the file</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you could use any other revision instead of HEAD</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show HEAD:path/to/file</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Files that are stored in the index have a stage number, usually zero.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (Staging slots 1, 2, and 3 are used during conflicted merges.)</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># To refer to the staged copy of the file, use the revision</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># `:number:path/to/file`. When the `number` is zero (which usually is),</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># one can omit the leading `:0`, leaving `:path/to/file`.</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show :0:path/to/file</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show :path/to/file</span></code></pre></div>
+<p><a href="https://stackoverflow.com/a/60854287">src</a></p>
 <hr />
 <h1 id="cc"><a href="#cc">C/C++</a></h1>
 <h2 id="compiler-flags">Compiler Flags</h2>

@@ -3,7 +3,7 @@ title: My Notes
 author: Ali Bozorgzadeh
 lang: en-US
 date: |
-    Last Updated: May 24, 2024
+    Last Updated: May 25, 2024
 ...
 
 ---
@@ -193,8 +193,26 @@ git config --global --get  # user.email displays your email.
 git config --global credential.helper # verify credentials.
 git config --global gui.recentrepo    # find your recent repo.
 ```
----
 
+## Show the HEAD and staged version of source
+
+```sh
+# The HEAD version of the file
+# you could use any other revision instead of HEAD
+git show HEAD:path/to/file
+
+# Files that are stored in the index have a stage number, usually zero.
+# (Staging slots 1, 2, and 3 are used during conflicted merges.)
+# To refer to the staged copy of the file, use the revision
+# `:number:path/to/file`. When the `number` is zero (which usually is),
+# one can omit the leading `:0`, leaving `:path/to/file`.
+git show :0:path/to/file
+git show :path/to/file
+```
+
+[src](https://stackoverflow.com/a/60854287)
+
+---
 
 # [C/C++](#cc)
 
