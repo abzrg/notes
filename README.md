@@ -153,8 +153,9 @@ git reset HEAD <file>
 ```
 
 Refs:
-1. [1](https://stackoverflow.com/a/6919257/13041067)
-1. [2](https://stackoverflow.com/a/26433550/13041067)
+
+- [https://stackoverflow.com/a/6919257/13041067](https://stackoverflow.com/a/6919257/13041067)
+- [https://stackoverflow.com/a/26433550/13041067](https://stackoverflow.com/a/26433550/13041067)
 
 ## List staged files
 
