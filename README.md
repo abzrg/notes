@@ -3,7 +3,7 @@ title: My Notes
 author: Ali Bozorgzadeh
 lang: en-US
 date: |
-    Last Updated: May 23, 2024
+    Last Updated: May 24, 2024
 ...
 
 ---
@@ -240,3 +240,65 @@ CFLAGS += -fsanitize={address,thread,undefined}
 
 - [GCC's documentation on Warning Options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html)
 - [Useful GCC Compiler Options](https://gist.github.com/g-berthiaume/74f0485fbba5cc3249eee458c1d0d386)
+
+---
+
+# [Make](#make)
+
+<!-- <hr color="black" width="50%" style="margin: 30px auto;" /> -->
+
+## [Functions for File Names](https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1)
+
+Get the info page with `info make <func>`
+
+```make
+# https://www.gnu.org/software/make/manual/html_node/Wildcards.html
+# $(wildcard pattern)
+objects := $(wildcard *.o)  # -> objects = *.o
+$(wildcard *.c *.h) # -> all files matching ‘.c’, sorted, followed by all files matching ‘.h’, sorted
+objects := $(patsubst %.c,%.o,$(wildcard *.c))
+
+
+# $(dir names…)
+$(dir src/foo.c hacks) # -> 'src/ ./'
+# src: https://stackoverflow.com/q/76457244
+SUBDIRS := $(dir $(wildcard */Makefile)) # -> Return (depth=1) all directories containing a Makefile
+
+
+# $(notdir names…)
+$(notdir src/foo.c hacks) # -> 'foo.c hacks'
+
+
+# $(suffix names…)
+$(suffix src/foo.c src-1.0/bar.c hacks) # -> '.c .c'
+
+
+# $(basename names…)
+$(basename src/foo.c src-1.0/bar hacks) # -> 'src/foo src-1.0/bar hacks'
+
+
+# $(addsuffix suffix,names…)
+$(addsuffix .c,foo bar) # -> 'foo.c bar.c'
+
+
+# $(addprefix prefix,names…)
+$(addprefix src/,foo bar) # -> 'src/foo src/bar'.
+
+
+# $(join list1,list2)
+$(join a b,.c .o) -> 'a.c b.o'
+
+
+# $(realpath names…)
+# - return the canonical absolute name (no . or .. components nor any repeated /) or symlinks.
+# - In case of a failure the empty string is returned.
+
+
+# $(abspath names…)
+# - returns canonical absolute name
+# - unlike realpath:
+#   - does not resolve symlink
+#   - does not care whether file exists (check for existence with wildcard function)
+```
+
+<hr color="white" style="margin: 20px auto;" />

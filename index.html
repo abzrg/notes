@@ -92,7 +92,7 @@
 <header id="title-block-header">
 <h1 class="title">My Notes</h1>
 <p class="author">Ali Bozorgzadeh</p>
-<p class="date"><p>Last Updated: May 23, 2024</p></p>
+<p class="date"><p>Last Updated: May 24, 2024</p></p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -110,6 +110,11 @@ Commits (with SSH)</a></li>
 <ul>
 <li><a href="#compiler-flags" id="toc-compiler-flags">Compiler
 Flags</a></li>
+</ul></li>
+<li><a href="#make" id="toc-make">Make</a>
+<ul>
+<li><a href="#functions-for-file-names"
+id="toc-functions-for-file-names">Functions for File Names</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -335,5 +340,60 @@ documentation on Warning Options</a></li>
 href="https://gist.github.com/g-berthiaume/74f0485fbba5cc3249eee458c1d0d386">Useful
 GCC Compiler Options</a></li>
 </ul>
+<hr />
+<h1 id="make"><a href="#make">Make</a></h1>
+<!-- <hr color="black" width="50%" style="margin: 30px auto;" /> -->
+<h2 id="functions-for-file-names"><a
+href="https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1">Functions
+for File Names</a></h2>
+<p>Get the info page with <code>info make &lt;func&gt;</code></p>
+<pre class="make"><code># https://www.gnu.org/software/make/manual/html_node/Wildcards.html
+# $(wildcard pattern)
+objects := $(wildcard *.o)  # -&gt; objects = *.o
+$(wildcard *.c *.h) # -&gt; all files matching ‘.c’, sorted, followed by all files matching ‘.h’, sorted
+objects := $(patsubst %.c,%.o,$(wildcard *.c))
+
+
+# $(dir names…)
+$(dir src/foo.c hacks) # -&gt; &#39;src/ ./&#39;
+# src: https://stackoverflow.com/q/76457244
+SUBDIRS := $(dir $(wildcard */Makefile)) # -&gt; Return (depth=1) all directories containing a Makefile
+
+
+# $(notdir names…)
+$(notdir src/foo.c hacks) # -&gt; &#39;foo.c hacks&#39;
+
+
+# $(suffix names…)
+$(suffix src/foo.c src-1.0/bar.c hacks) # -&gt; &#39;.c .c&#39;
+
+
+# $(basename names…)
+$(basename src/foo.c src-1.0/bar hacks) # -&gt; &#39;src/foo src-1.0/bar hacks&#39;
+
+
+# $(addsuffix suffix,names…)
+$(addsuffix .c,foo bar) # -&gt; &#39;foo.c bar.c&#39;
+
+
+# $(addprefix prefix,names…)
+$(addprefix src/,foo bar) # -&gt; &#39;src/foo src/bar&#39;.
+
+
+# $(join list1,list2)
+$(join a b,.c .o) -&gt; &#39;a.c b.o&#39;
+
+
+# $(realpath names…)
+# - return the canonical absolute name (no . or .. components nor any repeated /) or symlinks.
+# - In case of a failure the empty string is returned.
+
+
+# $(abspath names…)
+# - returns canonical absolute name
+# - unlike realpath:
+#   - does not resolve symlink
+#   - does not care whether file exists (check for existence with wildcard function)</code></pre>
+<hr color="white" style="margin: 20px auto;" />
 </body>
 </html>
