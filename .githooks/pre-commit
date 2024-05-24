@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+# Proceed if README.md is among the staged files
+if git --no-pager diff --name-only --staged | grep -q README.md; then
+    new_html=$(mktemp)
+    trap 'rm -f "$new_html"' EXIT INT TERM
+
+    # Generate the new HTML file
+    make TARGET="$new_html" build
+
+    # If the generated HTML is different from the current HTML
+    if ! diff "$new_html" index.html > /dev/null; then
+        printf "%s%s" \
+            "\x1B[31mError:\x1B[0m You forgot to convert notes from 'README.md' to 'index.html'.\n" \
+            "Running \`make publish\` and staging 'index.html' before committing...\n"
+        make publish
+        git add index.html
+    fi
+fi
+
