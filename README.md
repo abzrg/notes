@@ -213,6 +213,24 @@ git show :path/to/file
 
 [src](https://stackoverflow.com/a/60854287)
 
+## GitHub Search Filters (from [Krystian Safjan's Blog](https://www.safjan.com/github-search-techniques/))
+
+| Filter           | Search                                                |
+|:-----------------|:--------------------------------------------------    |
+| __"in:name"__                   | "Ruby-Projects in:name".               |
+| __"in:description"__            | "machine learning in:description".     |
+| __"in:readme"__                 | "learn ruby in:readme".                |
+| __"in:topic"__                  | "mobile development in:topic".         |
+| __"org:"__                      | (organization): "org:Microsoft".       |
+| __"license:"__                  | "license:Apache-2.0".                  |
+| __"stars:>"__                   | "stars:>1000".                         |
+| __"forks:>"__                   | "forks:>1000".                         |
+| __"language:"__                 | "language:ruby"                        |
+| __"Created"__ or __"Updated"__  | "in:date created:>2023-06-01".         |
+| __"pushed:>"__                  | "pushed:>2023-03-01 rails"             |
+
+> These techniques can help you quickly find the repositories you need. These search tips can transform the task of searching for repositories into an enjoyable and productive experience.
+
 ---
 
 # [C/C++](#cc)
