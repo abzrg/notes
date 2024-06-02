@@ -142,7 +142,8 @@ table {
   margin-right: auto;
   width: 90%;
   border-spacing: 0;
-  border: 1px solid #ccc;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
 }
 
 thead {
@@ -153,8 +154,12 @@ th,
 td {
   line-height: 2;
   text-align: center;
-  border: 1px solid #ccc;
+  border: none;
   padding: 1px 10px;;
+}
+
+th {
+  border-top: none;
 }
 
 ol, ul {
@@ -188,11 +193,6 @@ blockquote {
 
 #title-block-header {
     text-align: center;
-}
-
-table {
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
 }
 
 pre {
