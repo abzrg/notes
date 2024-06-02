@@ -111,10 +111,13 @@ pre {
   border: 1px solid #222;
   border-radius: 3px;
   white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  word-wrap: normal;
   padding: 1rem;
-  overflow: auto;
+  overflow: scroll;
+  background: #f8f8f8;
+  padding: 10px;
+  border: solid lightgray 1px;
+  broder-radius: 3px;
 }
 
 pre table td {
@@ -195,16 +198,12 @@ blockquote {
     text-align: center;
 }
 
-pre {
-    background: #f8f8f8;
-    padding: 10px;
-    /* padding-left: 15px; */
-    border: solid lightgray 1px;
-    broder-radius: 3px;
-}
-
 .sourceCode {
   overflow: scroll;
+}
+
+code {
+  white-space: pre;
 }
 
 p > code, h2 > code, li > code {
