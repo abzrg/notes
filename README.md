@@ -10,7 +10,7 @@ date: |
 
 # [Git](#git)
 
-## Diff with no context
+## [Diff with no context](#diff-with-no-context)
 
 To only see the changes without context:
 
@@ -28,7 +28,7 @@ git diff -U0
 
 why? quicker glimpse on what has changed
 
-## `rebase --interactive/-i`
+## [`rebase --interactive/-i`](#rebase---interactive-i)
 
 ### Edit an old commit
 
@@ -51,7 +51,7 @@ After executing this command, your default editor will open up, and you then jus
 > Note that these operations will rewrite history and this can be problematic in collaborative environments.
 So when you're about to force-push your new commits to the remote repository do it with caution.
 
-## Sign Commits (with SSH)
+## [Sign Commits (with SSH)](#sign-commits-with-ssh)
 
 ```sh
 git config --global gpg.format ssh
@@ -131,7 +131,7 @@ git rebase --continue
 - https://safjan.com/git-sign-commit-n-commits-back
 - https://blog.dbrgn.ch/2021/11/16/git-ssh-signatures/
 
-## Undo
+## [Undo](#undo)
 
 ```sh
 git restore --staged <file/dir>
@@ -157,7 +157,7 @@ Refs:
 - [https://stackoverflow.com/a/6919257/13041067](https://stackoverflow.com/a/6919257/13041067)
 - [https://stackoverflow.com/a/26433550/13041067](https://stackoverflow.com/a/26433550/13041067)
 
-## List staged files
+## [List staged files](#list-staged-files)
 
 ```sh
 # --cached/--staged: Changes between the index and your current HEAD.
@@ -173,7 +173,7 @@ git diff --name-only --cached --diff-filter=AM
 
 [src](https://stackoverflow.com/a/33610683)
 
-## Get entries from config
+## [Get entries from config](#get-entries-from-config)
 
 ```sh
 # To list all the entries (all the key=value)
@@ -195,7 +195,7 @@ git config --global credential.helper # verify credentials.
 git config --global gui.recentrepo    # find your recent repo.
 ```
 
-## Show the HEAD and staged version of source
+## [Show the HEAD and staged version of source](#show-the-head-and-staged-version-of-source)
 
 ```sh
 # The HEAD version of the file
@@ -213,7 +213,7 @@ git show :path/to/file
 
 [src](https://stackoverflow.com/a/60854287)
 
-## GitHub Search Filters (from [Krystian Safjan's Blog](https://www.safjan.com/github-search-techniques/))
+## [GitHub Search Filters](#github-search-filters-from-krystian-safjans-blog) (from [Krystian Safjan's Blog](https://www.safjan.com/github-search-techniques/))
 
 | Filter           | Search                                                |
 |:-----------------|:--------------------------------------------------    |
@@ -235,8 +235,7 @@ git show :path/to/file
 
 # [C/C++](#cc)
 
-
-## Compiler Flags
+## [Compiler Flags](#compiler-flags)
 
 If you run the following in the command-line
 `man gcc | nl | tail -1`,
@@ -319,7 +318,9 @@ CFLAGS += -fsanitize={address,thread,undefined}
 
 <!-- <hr color="black" width="50%" style="margin: 30px auto;" /> -->
 
-## [Functions for File Names](https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1)
+## [Functions for File Names](#functions-for-file-names)
+
+[Documentation: Functions for File Names](https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1)
 
 Get the info page with `info make <func>`
 
@@ -376,9 +377,9 @@ $(join a b,.c .o) -> 'a.c b.o'
 <hr color="white" style="margin: 20px auto;" />
 
 
-# Regular Expressions
+# [Regular Expressions](#regular-expressions)
 
-## Look around assertions
+## [Look around assertions](#look-around-assertions)
 
 ### Perl syntax [1]
 

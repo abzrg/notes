@@ -136,7 +136,8 @@ id="toc-look-around-assertions">Look around assertions</a></li>
 </nav>
 <hr />
 <h1 id="git"><a href="#git">Git</a></h1>
-<h2 id="diff-with-no-context">Diff with no context</h2>
+<h2 id="diff-with-no-context"><a href="#diff-with-no-context">Diff with
+no context</a></h2>
 <p>To only see the changes without context:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--unified</span><span class="op">=</span>0</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
@@ -145,8 +146,8 @@ id="toc-look-around-assertions">Look around assertions</a></li>
            Generate diffs with &lt;n&gt; lines of context instead of the usual
            three. Implies --patch.</code></pre>
 <p>why? quicker glimpse on what has changed</p>
-<h2
-id="rebase---interactive-i"><code>rebase --interactive/-i</code></h2>
+<h2 id="rebase---interactive-i"><a
+href="#rebase---interactive-i"><code>rebase --interactive/-i</code></a></h2>
 <h3 id="edit-an-old-commit">Edit an old commit</h3>
 <p>create a new “fix-up” commit that, as it’s name suggests, fix an old
 commit with a certain hash of <code>&lt;OLD_HASH&gt;</code>.</p>
@@ -163,7 +164,8 @@ can be problematic in collaborative environments. So when you’re about
 to force-push your new commits to the remote repository do it with
 caution.</p>
 </blockquote>
-<h2 id="sign-commits-with-ssh">Sign Commits (with SSH)</h2>
+<h2 id="sign-commits-with-ssh"><a href="#sign-commits-with-ssh">Sign
+Commits (with SSH)</a></h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> gpg.format ssh</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.signingkey ~/.ssh/examplekey.pub</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -230,7 +232,7 @@ article for more details.</p>
 <li>https://safjan.com/git-sign-commit-n-commits-back</li>
 <li>https://blog.dbrgn.ch/2021/11/16/git-ssh-signatures/</li>
 </ul>
-<h2 id="undo">Undo</h2>
+<h2 id="undo"><a href="#undo">Undo</a></h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="op">&lt;</span>file/dir<span class="op">&gt;</span></span></code></pre></div>
 <p>Note: <code>git rm --cached &lt;filePath&gt;</code> does not unstage
 a file, it actually stages the removal of the file(s) from the repo
@@ -256,7 +258,8 @@ href="https://stackoverflow.com/a/6919257/13041067">https://stackoverflow.com/a/
 <li><a
 href="https://stackoverflow.com/a/26433550/13041067">https://stackoverflow.com/a/26433550/13041067</a></li>
 </ul>
-<h2 id="list-staged-files">List staged files</h2>
+<h2 id="list-staged-files"><a href="#list-staged-files">List staged
+files</a></h2>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --cached/--staged: Changes between the index and your current HEAD.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># --name-only: Show only names of changed files.</span></span>
@@ -268,7 +271,8 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># you can add --no-pager to prevent the list be shown in a pager</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--name-only</span> <span class="at">--cached</span> <span class="at">--diff-filter</span><span class="op">=</span>AM</span></code></pre></div>
 <p><a href="https://stackoverflow.com/a/33610683">src</a></p>
-<h2 id="get-entries-from-config">Get entries from config</h2>
+<h2 id="get-entries-from-config"><a href="#get-entries-from-config">Get
+entries from config</a></h2>
 <div class="sourceCode" id="cb12"><pre
 class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To list all the entries (all the key=value)</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--local</span>/--global/--system <span class="at">--list</span>/-l</span>
@@ -287,8 +291,9 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="#
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--get</span>  <span class="co"># user.email displays your email.</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper <span class="co"># verify credentials.</span></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> gui.recentrepo    <span class="co"># find your recent repo.</span></span></code></pre></div>
-<h2 id="show-the-head-and-staged-version-of-source">Show the HEAD and
-staged version of source</h2>
+<h2 id="show-the-head-and-staged-version-of-source"><a
+href="#show-the-head-and-staged-version-of-source">Show the HEAD and
+staged version of source</a></h2>
 <div class="sourceCode" id="cb13"><pre
 class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The HEAD version of the file</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you could use any other revision instead of HEAD</span></span>
@@ -302,8 +307,9 @@ class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="#
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show :0:path/to/file</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show :path/to/file</span></code></pre></div>
 <p><a href="https://stackoverflow.com/a/60854287">src</a></p>
-<h2 id="github-search-filters-from-krystian-safjans-blog">GitHub Search
-Filters (from <a
+<h2 id="github-search-filters-from-krystian-safjans-blog"><a
+href="#github-search-filters-from-krystian-safjans-blog">GitHub Search
+Filters</a> (from <a
 href="https://www.safjan.com/github-search-techniques/">Krystian
 Safjan’s Blog</a>)</h2>
 <table>
@@ -372,7 +378,8 @@ into an enjoyable and productive experience.</p>
 </blockquote>
 <hr />
 <h1 id="cc"><a href="#cc">C/C++</a></h1>
-<h2 id="compiler-flags">Compiler Flags</h2>
+<h2 id="compiler-flags"><a href="#compiler-flags">Compiler
+Flags</a></h2>
 <p>If you run the following in the command-line
 <code>man gcc | nl | tail -1</code>, you get something more than 20k (in
 my case: 24136). It’s none other than the lines of documentation in the
@@ -479,8 +486,10 @@ GCC Compiler Options</a></li>
 <h1 id="make"><a href="#make">Make</a></h1>
 <!-- <hr color="black" width="50%" style="margin: 30px auto;" /> -->
 <h2 id="functions-for-file-names"><a
-href="https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1">Functions
-for File Names</a></h2>
+href="#functions-for-file-names">Functions for File Names</a></h2>
+<p><a
+href="https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#index-abspath-1">Documentation:
+Functions for File Names</a></p>
 <p>Get the info page with <code>info make &lt;func&gt;</code></p>
 <pre class="make"><code># https://www.gnu.org/software/make/manual/html_node/Wildcards.html
 # $(wildcard pattern)
@@ -530,8 +539,10 @@ $(join a b,.c .o) -&gt; &#39;a.c b.o&#39;
 #   - does not resolve symlink
 #   - does not care whether file exists (check for existence with wildcard function)</code></pre>
 <hr color="white" style="margin: 20px auto;" />
-<h1 id="regular-expressions">Regular Expressions</h1>
-<h2 id="look-around-assertions">Look around assertions</h2>
+<h1 id="regular-expressions"><a href="#regular-expressions">Regular
+Expressions</a></h1>
+<h2 id="look-around-assertions"><a href="#look-around-assertions">Look
+around assertions</a></h2>
 <h3 id="perl-syntax-1">Perl syntax [1]</h3>
 <ul>
 <li><code>(?=pattern)</code>: positive look-ahead assertion</li>
