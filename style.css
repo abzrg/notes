@@ -203,6 +203,10 @@ pre {
     broder-radius: 3px;
 }
 
+.sourceCode {
+  overflow: scroll;
+}
+
 p > code, h2 > code, li > code {
     padding: 3px;
     background: #f4f4f4;
