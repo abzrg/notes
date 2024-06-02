@@ -12,6 +12,7 @@ build: $(TARGET)
 $(TARGET): $(SRC) $(DEPS)
 	@echo [build]
 	pandoc \
+		--highlight-style=kate \
 		--toc=true --toc-depth=2 \
 		--standalone \
 		--css=$(STYLE) \
@@ -25,6 +26,7 @@ live:
 	live-server &
 	ls -1 $(SRC) $(DEPS) \
 		| entr pandoc \
+			--highlight-style=kate \
 			--toc=true --toc-depth=2 \
 			--standalone \
 			--css=$(STYLE) \
