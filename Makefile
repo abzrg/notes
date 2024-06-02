@@ -36,7 +36,7 @@ live:
 publish:
 	@echo [publish]
 	git show :0:$(SRC) > $(SRC).HEAD
-	$(MAKE) SRC=$(SRC).HEAD
+	$(MAKE) SRC=$(SRC).HEAD update_date build
 	$(RM) -fv $(SRC).HEAD
 
 
