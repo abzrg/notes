@@ -10,6 +10,7 @@ all: $(TARGET)
 
 build: $(TARGET)
 $(TARGET): $(SRC) $(DEPS)
+	@echo [build]
 	pandoc \
 		--toc=true --toc-depth=2 \
 		--standalone \
@@ -20,6 +21,7 @@ $(TARGET): $(SRC) $(DEPS)
 
 
 live:
+	@echo [live]
 	live-server &
 	ls -1 $(SRC) $(DEPS) \
 		| entr pandoc \
@@ -32,16 +34,19 @@ live:
 
 
 publish:
+	@echo [publish]
 	git show :0:$(SRC) > $(SRC).HEAD
 	$(MAKE) SRC=$(SRC).HEAD
 	$(RM) -fv $(SRC).HEAD
 
 
 update_date: $(SRC)
+	@echo [updating the date]
 	sed -i -e '/Last Update/ s/:.*/: '"$$(date +'%B %e, %Y')"'/' $<
 
 
 setup_hooks:
+	@echo [setting up hooks]
 	if test -z `git config --local --get core.hooksPath`; then \
 		git config --local core.hooksPath .githooks/; \
 	fi
