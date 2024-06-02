@@ -132,6 +132,10 @@ Expressions</a>
 <li><a href="#look-around-assertions"
 id="toc-look-around-assertions">Look around assertions</a></li>
 </ul></li>
+<li><a href="#vim" id="toc-vim">Vim</a>
+<ul>
+<li><a href="#macro-tips" id="toc-macro-tips">Macro Tips</a></li>
+</ul></li>
 </ul>
 </nav>
 <hr />
@@ -538,7 +542,6 @@ $(join a b,.c .o) -&gt; &#39;a.c b.o&#39;
 # - unlike realpath:
 #   - does not resolve symlink
 #   - does not care whether file exists (check for existence with wildcard function)</code></pre>
-<hr color="white" style="margin: 20px auto;" />
 <h1 id="regular-expressions"><a href="#regular-expressions">Regular
 Expressions</a></h1>
 <h2 id="look-around-assertions"><a href="#look-around-assertions">Look
@@ -596,5 +599,60 @@ https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind</a></li>
 <li><a href="https://www.rexegg.com/regex-lookarounds.html">Mastering
 Lookahead and Lookbehind</a></li>
 </ul>
+<h1 id="vim"><a href="#vim">Vim</a></h1>
+<h2 id="macro-tips"><a href="#macro-tips">Macro Tips</a></h2>
+<h3 id="prevent-infinite-looping">Prevent infinite looping</h3>
+<p>Temporarily disable <code>wrapscan</code> option. <a
+href="https://stackoverflow.com/a/18750434/13041067">(src)</a></p>
+<pre><code>set nowrapscan
+# &#39;wrapscan&#39;: Searches wrap around the end of the file. hi</code></pre>
+<h3 id="stop-a-running-macro">Stop a running macro</h3>
+<p>Press <code>C-c</code>.</p>
+<h3 id="speed-up-macro-execution">Speed up macro execution</h3>
+<p>One of the ways to speed up the macro is to make it silent! <a
+href="https://stackoverflow.com/a/18750434/13041067">(src)</a></p>
+<pre class="vim"><code>:silent! normal 1000@q
+:silent! norm 1000@q</code></pre>
+<p>Another way is to enable <code>lazyredraw</code>:</p>
+<pre class="vim"><code>set lazyredraw</code></pre>
+<h3 id="apply-macro-in-a-range-or-lines-matching-a-pattern">Apply macro
+in a range or lines matching a /pattern/</h3>
+<pre class="vim"><code>:        0,.   normal @q  &quot; from the beginning of the file to the current line
+:        .,$   normal @q  &quot; from current line to end of the file
+:        0,$   normal @q  &quot; from the beginning to the end of the file (the whole buffer)
+:        %     normal @q  &quot; also, the whole buffer
+:silent! 3,5   normal @q  &quot; from line 3 to line 5
+:silent! -2,+1 normal @q  &quot; from two line above to one line below the current line
+:silent! &#39;&lt;,&#39;&gt; normal @q  &quot; in a selection
+:   g/pattern/ normal @q  : all lines matching /pattern/</code></pre>
+<h3 id="editing-a-macro">Editing a macro</h3>
+<p>Let’s say we forgot to go the beginning of the line at the end of the
+macro <code>q</code>. We can fix it in two ways. <a
+href="https://thoughtbot.com/blog/how-to-edit-an-existing-vim-macro">(src)</a></p>
+<p>Yanking it into a register:</p>
+<ul>
+<li><code>"qp</code> paste the contents of the register to the current
+cursor position</li>
+<li><code>I</code> enter insert mode at the begging of the pasted
+line</li>
+<li><code>^</code> add the missing motion to return to the front of the
+line</li>
+<li><code>&lt;Escape&gt;</code> return to visual mode</li>
+<li><code>"qyy</code> yank this new modified macro back into the q
+register</li>
+<li><code>dd</code> delete the pasted register from the file your
+editing</li>
+</ul>
+<p>Editing the register visually:</p>
+<ul>
+<li><code>:let @q='</code> open the q register</li>
+<li><code>&lt;Cntl-r&gt;&lt;Cntl-r&gt;q</code> paste the contents of the
+q register into the buffer</li>
+<li><code>^</code> add the missing motion to return to the front of the
+line</li>
+<li><code>'</code> add a closing quote</li>
+<li><code>&lt;Enter&gt;</code> finish editing the macro</li>
+</ul>
+<hr color="white" style="margin: 20px auto;" />
 </body>
 </html>

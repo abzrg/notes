@@ -374,8 +374,6 @@ $(join a b,.c .o) -> 'a.c b.o'
 #   - does not care whether file exists (check for existence with wildcard function)
 ```
 
-<hr color="white" style="margin: 20px auto;" />
-
 
 # [Regular Expressions](#regular-expressions)
 
@@ -434,3 +432,75 @@ dad\.@!
 ### Further Readings
 
 - [Mastering Lookahead and Lookbehind](https://www.rexegg.com/regex-lookarounds.html)
+
+
+# [Vim](#vim)
+
+## [Macro Tips](#macro-tips)
+
+### Prevent infinite looping
+
+Temporarily disable `wrapscan` option. [(src)](https://stackoverflow.com/a/18750434/13041067)
+
+```
+set nowrapscan
+# 'wrapscan': Searches wrap around the end of the file. hi
+```
+
+### Stop a running macro
+
+Press `C-c`.
+
+### Speed up macro execution
+
+One of the ways to speed up the macro is to make it silent! [(src)](https://stackoverflow.com/a/18750434/13041067)
+
+```vim
+:silent! normal 1000@q
+:silent! norm 1000@q
+```
+
+Another way is to enable `lazyredraw`:
+
+```vim
+set lazyredraw
+```
+
+### Apply macro in a range or lines matching a /pattern/
+
+```vim
+:        0,.   normal @q  " from the beginning of the file to the current line
+:        .,$   normal @q  " from current line to end of the file
+:        0,$   normal @q  " from the beginning to the end of the file (the whole buffer)
+:        %     normal @q  " also, the whole buffer
+:silent! 3,5   normal @q  " from line 3 to line 5
+:silent! -2,+1 normal @q  " from two line above to one line below the current line
+:silent! '<,'> normal @q  " in a selection
+:   g/pattern/ normal @q  : all lines matching /pattern/
+```
+
+### Editing a macro
+
+Let's say we forgot to go the beginning of the line at the end of the macro `q`.
+We can fix it in two ways. [(src)](https://thoughtbot.com/blog/how-to-edit-an-existing-vim-macro)
+
+Yanking it into a register:
+
+- `"qp` paste the contents of the register to the current cursor position
+- `I` enter insert mode at the begging of the pasted line
+- `^` add the missing motion to return to the front of the line
+- `<Escape>` return to visual mode
+- `"qyy` yank this new modified macro back into the q register
+- `dd` delete the pasted register from the file your editing
+
+
+ Editing the register visually:
+
+- `:let @q='` open the q register
+- `<Cntl-r><Cntl-r>q` paste the contents of the q register into the buffer
+- `^` add the missing motion to return to the front of the line
+- `'` add a closing quote
+- `<Enter>` finish editing the macro
+
+
+<hr color="white" style="margin: 20px auto;" />
