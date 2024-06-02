@@ -126,6 +126,12 @@ Flags</a></li>
 <li><a href="#functions-for-file-names"
 id="toc-functions-for-file-names">Functions for File Names</a></li>
 </ul></li>
+<li><a href="#regular-expressions" id="toc-regular-expressions">Regular
+Expressions</a>
+<ul>
+<li><a href="#look-around-assertions"
+id="toc-look-around-assertions">Look around assertions</a></li>
+</ul></li>
 </ul>
 </nav>
 <hr />
@@ -524,5 +530,53 @@ $(join a b,.c .o) -&gt; &#39;a.c b.o&#39;
 #   - does not resolve symlink
 #   - does not care whether file exists (check for existence with wildcard function)</code></pre>
 <hr color="white" style="margin: 20px auto;" />
+<h1 id="regular-expressions">Regular Expressions</h1>
+<h2 id="look-around-assertions">Look around assertions</h2>
+<h3 id="perl-syntax-1">Perl syntax [1]</h3>
+<ul>
+<li><code>(?=pattern)</code>: positive look-ahead assertion</li>
+<li><code>(?!pattern)</code>: negative look-ahead assertion</li>
+<li><code>(?&lt;=pattern)</code>: positive look-behind assertion</li>
+<li><code>(?&lt;!pattern)</code>: negative look-behind assertion</li>
+</ul>
+<h3 id="vim-syntax-2">Vim syntax [2]</h3>
+<p>There are two ways. One specifying the <strong>start</strong> and
+<strong>end</strong> of match:</p>
+<ul>
+<li>mark the start of your match with <code>\zs</code></li>
+<li>mark the end of your match with <code>\ze</code></li>
+</ul>
+<pre><code>foo \zsbar\ze baz
+# matches &#39;foo bar baz&#39; but not &#39;foo bar qux&#39; nor &#39;foo bar&#39; nor &#39;foo&#39;</code></pre>
+<p>The other is using Perl-like syntax of assertion (very-magic
+mode).</p>
+<ul>
+<li><code>(atom)@=</code>: positive look-ahead assertion</li>
+<li><code>(atom)@!</code>: negative look-ahead assertion</li>
+<li><code>(atom)@&lt;=</code>: positive look-behind assertion</li>
+<li><code>(atom)@&lt;!</code>: negative look-behind assertion</li>
+</ul>
+<p>For non-very-magic mode escape like: <code>\(</code>,
+<code>\)</code>, and <code>\@</code></p>
+<pre><code>(foo )@&lt;=bar( baz)@=
+# matches &quot;bar&quot; in &quot;foo bar baz&quot; not in &quot;foo bar qux&quot; etc.
+
+(mi )@&lt;=casa
+# matches &quot;casa&quot; if preceded by &quot;mi &quot;
+
+(mi )@&lt;!casa
+# matches &quot;casa&quot; if not preceded by &quot;mi &quot;
+
+dad\.@=
+# matches &quot;dad&quot; if followed by a period
+
+dad\.@!
+# matches &quot;dad&quot; if not followed by a period</code></pre>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://www.perlmonks.org/?node_id=518444">1</a></li>
+<li><a
+href="https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind">2</a></li>
+</ul>
 </body>
 </html>

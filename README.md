@@ -374,3 +374,58 @@ $(join a b,.c .o) -> 'a.c b.o'
 ```
 
 <hr color="white" style="margin: 20px auto;" />
+
+
+# Regular Expressions
+
+## Look around assertions
+
+### Perl syntax [1]
+
+- `(?=pattern)`: positive look-ahead assertion
+- `(?!pattern)`: negative look-ahead assertion
+- `(?<=pattern)`: positive look-behind assertion
+- `(?<!pattern)`: negative look-behind assertion
+
+### Vim syntax [2]
+
+There are two ways. One specifying the __start__ and __end__ of match:
+
+- mark the start of your match with `\zs`
+- mark the end of your match with `\ze`
+
+```
+foo \zsbar\ze baz
+# matches 'foo bar baz' but not 'foo bar qux' nor 'foo bar' nor 'foo'
+```
+
+The other is using Perl-like syntax of assertion (very-magic mode).
+
+- `(atom)@=`: positive look-ahead assertion
+- `(atom)@!`: negative look-ahead assertion
+- `(atom)@<=`: positive look-behind assertion
+- `(atom)@<!`: negative look-behind assertion
+
+For non-very-magic mode escape like: `\(`, `\)`, and `\@`
+
+```
+(foo )@<=bar( baz)@=
+# matches "bar" in "foo bar baz" not in "foo bar qux" etc.
+
+(mi )@<=casa
+# matches "casa" if preceded by "mi "
+
+(mi )@<!casa
+# matches "casa" if not preceded by "mi "
+
+dad\.@=
+# matches "dad" if followed by a period
+
+dad\.@!
+# matches "dad" if not followed by a period
+```
+
+### Reference
+
+- [1](https://www.perlmonks.org/?node_id=518444)
+- [2](https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind)
