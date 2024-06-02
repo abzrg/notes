@@ -428,5 +428,9 @@ dad\.@!
 
 ### Reference
 
-- [1](https://www.perlmonks.org/?node_id=518444)
-- [2](https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind)
+- [[1]: https://www.perlmonks.org/?node_id=518444](https://www.perlmonks.org/?node_id=518444)
+- [[2]: https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind](https://vim.fandom.com/wiki/Regex_lookahead_and_lookbehind)
+
+### Further Readings
+
+- [Mastering Lookahead and Lookbehind](https://www.rexegg.com/regex-lookarounds.html)
