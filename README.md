@@ -503,4 +503,19 @@ Yanking it into a register:
 - `<Enter>` finish editing the macro
 
 
+# [FFMPEG](#ffmpeg)
+
+## [Extract subtitle from a video](#extract-subtitle-from-a-video)
+
+```sh
+ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
+```
+
+- `-i`: Input file URL/path.
+- `-map`: Designate one or more input streams as a source for the output file.
+- `s:0`: Select the subtitle stream.
+  - `0:s:0` would download the first subtitle track. If there are several, use `0:s:1` to download the second one, `0:s:2` to download the third one, and so on.
+
+[(src)](https://superuser.com/a/927507)
+
 <hr color="white" style="margin: 20px auto;" />

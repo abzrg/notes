@@ -95,7 +95,7 @@
 <header id="title-block-header">
 <h1 class="title">My Notes</h1>
 <p class="author">Ali Bozorgzadeh</p>
-<p class="date"><p>Last Updated: June 2, 2024</p></p>
+<p class="date"><p>Last Updated: June 8, 2024</p></p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -138,6 +138,12 @@ id="toc-look-around-assertions">Look around assertions</a></li>
 <li><a href="#vim" id="toc-vim">Vim</a>
 <ul>
 <li><a href="#macro-tips" id="toc-macro-tips">Macro Tips</a></li>
+</ul></li>
+<li><a href="#ffmpeg" id="toc-ffmpeg">FFMPEG</a>
+<ul>
+<li><a href="#extract-subtitle-from-a-video"
+id="toc-extract-subtitle-from-a-video">Extract subtitle from a
+video</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -656,6 +662,24 @@ line</li>
 <li><code>'</code> add a closing quote</li>
 <li><code>&lt;Enter&gt;</code> finish editing the macro</li>
 </ul>
+<h1 id="ffmpeg"><a href="#ffmpeg">FFMPEG</a></h1>
+<h2 id="extract-subtitle-from-a-video"><a
+href="#extract-subtitle-from-a-video">Extract subtitle from a
+video</a></h2>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> Movie.mkv <span class="at">-map</span> 0:s:0 subs.srt</span></code></pre></div>
+<ul>
+<li><code>-i</code>: Input file URL/path.</li>
+<li><code>-map</code>: Designate one or more input streams as a source
+for the output file.</li>
+<li><code>s:0</code>: Select the subtitle stream.
+<ul>
+<li><code>0:s:0</code> would download the first subtitle track. If there
+are several, use <code>0:s:1</code> to download the second one,
+<code>0:s:2</code> to download the third one, and so on.</li>
+</ul></li>
+</ul>
+<p><a href="https://superuser.com/a/927507">(src)</a></p>
 <hr color="white" style="margin: 20px auto;" />
 </body>
 </html>
