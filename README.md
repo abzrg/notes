@@ -518,4 +518,29 @@ ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
 
 [(src)](https://superuser.com/a/927507)
 
+
+# TeX
+
+## Caption
+
+```tex
+% ... in the preamble
+
+% For caption settings
+\usepackage[labelformat=simple,figurename=Fig.,labelfont=bf,textfont=it]{caption}
+
+% For subfigure captions
+\usepackage{subcaption}
+
+% ... in the document
+
+\caption[Short caption that appear in \listoffigures]{Long caption that appear in text}
+
+% A caption that doesn't appear under the figure
+\captionlistentry[figure]{Natural Numbers}
+\captionlistentry*[figure]{Integers Numbers} % unnumbered
+
+```
+
 <hr color="white" style="margin: 20px auto;" />
+

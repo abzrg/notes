@@ -95,7 +95,7 @@
 <header id="title-block-header">
 <h1 class="title">My Notes</h1>
 <p class="author">Ali Bozorgzadeh</p>
-<p class="date"><p>Last Updated: June 8, 2024</p></p>
+<p class="date"><p>Last Updated: June 18, 2024</p></p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -144,6 +144,10 @@ id="toc-look-around-assertions">Look around assertions</a></li>
 <li><a href="#extract-subtitle-from-a-video"
 id="toc-extract-subtitle-from-a-video">Extract subtitle from a
 video</a></li>
+</ul></li>
+<li><a href="#tex" id="toc-tex">TeX</a>
+<ul>
+<li><a href="#caption" id="toc-caption">Caption</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -680,6 +684,24 @@ are several, use <code>0:s:1</code> to download the second one,
 </ul></li>
 </ul>
 <p><a href="https://superuser.com/a/927507">(src)</a></p>
+<h1 id="tex">TeX</h1>
+<h2 id="caption">Caption</h2>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode tex"><code class="sourceCode latex"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the preamble</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">% For caption settings</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelformat=simple,figurename=Fig.,labelfont=bf,textfont=it]{<span class="ex">caption</span>}</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">% For subfigure captions</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">subcaption</span>}</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the document</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\caption</span>[Short caption that appear in <span class="fu">\listoffigures</span>]{Long caption that appear in text}</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">% A caption that doesn&#39;t appear under the figure</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry</span>[figure]{Natural Numbers}</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry*</span>[figure]{Integers Numbers} <span class="co">% unnumbered</span></span></code></pre></div>
 <hr color="white" style="margin: 20px auto;" />
 </body>
 </html>
