@@ -519,9 +519,9 @@ ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
 [(src)](https://superuser.com/a/927507)
 
 
-# TeX
+# [TeX](#tex)
 
-## Caption
+## [Caption](#caption)
 
 ```tex
 % ... in the preamble
@@ -541,6 +541,15 @@ ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
 \captionlistentry*[figure]{Integers Numbers} % unnumbered
 
 ```
+
+## (Vertical Bar of Evaluation)[#vertical-bar-of-evaluation]
+
+Encapsulate with `\left.` and `\right\vert_{a}{b}`
+
+```
+\left. {some more stuff} \right\vert_{0}^{\infty}
+```
+
 
 <hr color="white" style="margin: 20px auto;" />
 
