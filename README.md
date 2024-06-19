@@ -547,8 +547,27 @@ ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
 Encapsulate with `\left.` and `\right\vert_{a}{b}`
 
 ```
+% in math mode
 \left. {some more stuff} \right\vert_{0}^{\infty}
 ```
+
+This will automatically set the height of the vertical bar.
+
+Or you can use to manually control the height of the vertical bar:
+
+```
+% in math mode
+{some math stuff}\big\rvert
+{some math stuff}\bigr\vert
+{some math stuff}\bigg\rvert
+
+{some math stuff}\Big\rvert
+{some math stuff}\Bigr\vert
+{some math stuff}\Bigg\rvert
+```
+
+Note: sometimes under the radical (`\sqrt`) get tall enough that changes the angle of the radical.
+In this case my not so much interesting solution is to reduce the height.
 
 
 <hr color="white" style="margin: 20px auto;" />

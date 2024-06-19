@@ -709,7 +709,22 @@ class="sourceCode tex"><code class="sourceCode latex"><span id="cb23-1"><a href=
 Bar of Evaluation)[#vertical-bar-of-evaluation]</h2>
 <p>Encapsulate with <code>\left.</code> and
 <code>\right\vert_{a}{b}</code></p>
-<pre><code>\left. {some more stuff} \right\vert_{0}^{\infty}</code></pre>
+<pre><code>% in math mode
+\left. {some more stuff} \right\vert_{0}^{\infty}</code></pre>
+<p>This will automatically set the height of the vertical bar.</p>
+<p>Or you can use to manually control the height of the vertical
+bar:</p>
+<pre><code>% in math mode
+{some math stuff}\big\rvert
+{some math stuff}\bigr\vert
+{some math stuff}\bigg\rvert
+
+{some math stuff}\Big\rvert
+{some math stuff}\Bigr\vert
+{some math stuff}\Bigg\rvert</code></pre>
+<p>Note: sometimes under the radical (<code>\sqrt</code>) get tall
+enough that changes the angle of the radical. In this case my not so
+much interesting solution is to reduce the height.</p>
 <hr color="white" style="margin: 20px auto;" />
 </body>
 </html>
