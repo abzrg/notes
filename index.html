@@ -128,6 +128,9 @@ Flags</a></li>
 <ul>
 <li><a href="#functions-for-file-names"
 id="toc-functions-for-file-names">Functions for File Names</a></li>
+<li><a href="#suppress-printing-the-current-directory"
+id="toc-suppress-printing-the-current-directory">Suppress printing the
+current directory</a></li>
 </ul></li>
 <li><a href="#regular-expressions" id="toc-regular-expressions">Regular
 Expressions</a>
@@ -558,6 +561,26 @@ $(join a b,.c .o) -&gt; &#39;a.c b.o&#39;
 # - unlike realpath:
 #   - does not resolve symlink
 #   - does not care whether file exists (check for existence with wildcard function)</code></pre>
+<h2 id="suppress-printing-the-current-directory"><a
+href="#suppress-printing-the-current-directory">Suppress printing the
+current directory</a></h2>
+<p><code>--no-print-directory</code> flag or:</p>
+<pre class="make"><code>ifndef VERBOSE
+MAKEFLAGS += --no-print-directory
+endif</code></pre>
+<p><a href="https://stackoverflow.com/a/8080887/13041067">src</a></p>
+<p>or</p>
+<pre class="make"><code>MAKEFLAGS += $(if $(value VERBOSE),,--no-print-directory)</code></pre>
+<p><a href="https://stackoverflow.com/a/8080887/13041067">src</a></p>
+<p>Note: variable assignment can’t occur within an expansion which in
+turn is due to how Make parses makefiles.</p>
+<pre class="make"><code># error
+$(if $(VERBOSE),,MAKEFLAGS += no-print-directory))</code></pre>
+<p>The only way to include variable assignment (or something else like
+rule definition) into an expandable code (<code>$(if ...)</code> in
+above examples) is <code>eval</code> function.</p>
+<p><a
+href="https://stackoverflow.com/questions/8028137/how-to-specify-no-print-directory-within-the-makefile-itself#comment10034695_8080887">src</a></p>
 <h1 id="regular-expressions"><a href="#regular-expressions">Regular
 Expressions</a></h1>
 <h2 id="look-around-assertions"><a href="#look-around-assertions">Look
@@ -673,8 +696,8 @@ line</li>
 <h2 id="extract-subtitle-from-a-video"><a
 href="#extract-subtitle-from-a-video">Extract subtitle from a
 video</a></h2>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> Movie.mkv <span class="at">-map</span> 0:s:0 subs.srt</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> Movie.mkv <span class="at">-map</span> 0:s:0 subs.srt</span></code></pre></div>
 <ul>
 <li><code>-i</code>: Input file URL/path.</li>
 <li><code>-map</code>: Designate one or more input streams as a source
@@ -689,22 +712,22 @@ are several, use <code>0:s:1</code> to download the second one,
 <p><a href="https://superuser.com/a/927507">(src)</a></p>
 <h1 id="tex"><a href="#tex">TeX</a></h1>
 <h2 id="caption"><a href="#caption">Caption</a></h2>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode tex"><code class="sourceCode latex"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the preamble</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">% For caption settings</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelformat=simple,figurename=Fig.,labelfont=bf,textfont=it]{<span class="ex">caption</span>}</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">% For subfigure captions</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">subcaption</span>}</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the document</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\caption</span>[Short caption that appear in <span class="fu">\listoffigures</span>]{Long caption that appear in text}</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">% A caption that doesn&#39;t appear under the figure</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry</span>[figure]{Natural Numbers}</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry*</span>[figure]{Integers Numbers} <span class="co">% unnumbered</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode tex"><code class="sourceCode latex"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the preamble</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">% For caption settings</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelformat=simple,figurename=Fig.,labelfont=bf,textfont=it]{<span class="ex">caption</span>}</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">% For subfigure captions</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">subcaption</span>}</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">% ... in the document</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\caption</span>[Short caption that appear in <span class="fu">\listoffigures</span>]{Long caption that appear in text}</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">% A caption that doesn&#39;t appear under the figure</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry</span>[figure]{Natural Numbers}</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">\captionlistentry*</span>[figure]{Integers Numbers} <span class="co">% unnumbered</span></span></code></pre></div>
 <h2 id="vertical-bar-of-evaluationvertical-bar-of-evaluation">(Vertical
 Bar of Evaluation)[#vertical-bar-of-evaluation]</h2>
 <p>Encapsulate with <code>\left.</code> and

@@ -375,6 +375,40 @@ $(join a b,.c .o) -> 'a.c b.o'
 ```
 
 
+## [Suppress printing the current directory](#suppress-printing-the-current-directory)
+
+`--no-print-directory` flag or:
+
+```make
+ifndef VERBOSE
+MAKEFLAGS += --no-print-directory
+endif
+```
+[src](https://stackoverflow.com/a/8080887/13041067)
+
+or
+
+```make
+MAKEFLAGS += $(if $(value VERBOSE),,--no-print-directory)
+```
+
+[src](https://stackoverflow.com/a/8080887/13041067)
+
+Note: variable assignment can't occur within an expansion which in turn is due
+to how Make parses makefiles.
+
+```make
+# error
+$(if $(VERBOSE),,MAKEFLAGS += no-print-directory))
+```
+
+The only way to include variable assignment (or something else like rule
+definition) into an expandable code (`$(if ...)` in above examples) is `eval`
+function.
+
+[src](https://stackoverflow.com/questions/8028137/how-to-specify-no-print-directory-within-the-makefile-itself#comment10034695_8080887)
+
+
 # [Regular Expressions](#regular-expressions)
 
 ## [Look around assertions](#look-around-assertions)
