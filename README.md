@@ -604,5 +604,16 @@ Note: sometimes under the radical (`\sqrt`) get tall enough that changes the ang
 In this case my not so much interesting solution is to reduce the height.
 
 
+## [Underfill problem texttt](#underfill-problem-texttt)
+
+
+```tex
+\texttt{lagrangian/basic} % warning: Underfull \hbox (badness 1360) in paragraph at lines
+\texttt{lagrangian\slash basic} % no wraning
+```
+
+
 <hr color="white" style="margin: 20px auto;" />
+
+
 
