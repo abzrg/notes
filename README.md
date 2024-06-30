@@ -633,5 +633,11 @@ rotate. Then go to data tab and there double-click on `Placement`. There set the
 [src (Although it didn't immediately help and had to try many things out for so long)](https://forum.freecad.org/viewtopic.php?t=13081)
 
 
+## [Bounding box](#bounding-box)
+
+Not sure how it can be done in FreeCAD yet. As a workaround, export the model to stl/obj and open it
+with ParaView and in the properties panel see the span of x, y and z of the geometry.
+
+
 <hr color="white" style="margin: 20px auto;" />
 
