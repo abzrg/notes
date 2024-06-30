@@ -576,7 +576,7 @@ ffmpeg -i Movie.mkv -map 0:s:0 subs.srt
 
 ```
 
-## (Vertical Bar of Evaluation)[#vertical-bar-of-evaluation]
+## [Vertical Bar of Evaluation](#vertical-bar-of-evaluation)
 
 Encapsulate with `\left.` and `\right\vert_{a}{b}`
 
@@ -613,9 +613,9 @@ In this case my not so much interesting solution is to reduce the height.
 ```
 
 
-# FreeCAD
+# [FreeCAD](#freecad)
 
-## Exporting
+## [Exporting](#exporting)
 
 ### Correct Orientation When Exporting
 
