@@ -624,11 +624,12 @@ exporting.
 
 ### But Paraview uses Y as up axis
 
-FreeCAD by default uses the x-y as the base 2d coordinate and Z as up axis. Paraview, uses Y
-as up axis. To fix you must rotate it. To do so, in the combo view select all the things you want to
-rotate. Then go to data tab and there double-click on `Placement`. There set the axis of rotation to
-`x` (set it to `1.0`) (if you have your body sketched in the front view) and set the `degree` to
-`-90`. Finally export it and view the result in paraview.
+For that If you can do you sketch in x-y plane.
+
+If you can't do that. To fix you must rotate it. To do so, in the combo view select all the
+things you want to rotate. Then go to data tab and there double-click on `Placement`. There set the
+axis of rotation to `x` (set it to `1.0`) (if you have your body sketched in the front view) and set
+the `degree` to `-90`. Finally export it and view the result in paraview.
 
 [src (Although it didn't immediately help and had to try many things out for so long)](https://forum.freecad.org/viewtopic.php?t=13081)
 
