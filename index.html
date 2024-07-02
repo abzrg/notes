@@ -95,7 +95,7 @@
 <header id="title-block-header">
 <h1 class="title">My Notes</h1>
 <p class="author">Ali Bozorgzadeh</p>
-<p class="date"><p>Last Updated: July 1, 2024</p></p>
+<p class="date"><p>Last Updated: July 2, 2024</p></p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -160,6 +160,12 @@ id="toc-underfill-problem-texttt">Underfill problem texttt</a></li>
 <ul>
 <li><a href="#exporting" id="toc-exporting">Exporting</a></li>
 <li><a href="#bounding-box" id="toc-bounding-box">Bounding box</a></li>
+<li><a href="#surface-extraction-workflow"
+id="toc-surface-extraction-workflow">Surface Extraction
+Workflow</a></li>
+<li><a href="#z-axis-in-cad-programs-freecad-vs-paraview"
+id="toc-z-axis-in-cad-programs-freecad-vs-paraview">Z-axis in CAD
+programs: FreeCAD vs Paraview</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -781,6 +787,21 @@ so long)</a></p>
 <p>Not sure how it can be done in FreeCAD yet. As a workaround, export
 the model to stl/obj and open it with ParaView and in the properties
 panel see the span of x, y and z of the geometry.</p>
+<h2 id="surface-extraction-workflow">Surface Extraction Workflow</h2>
+<h3 id="when-you-have-fcstd-file">when you have fcstd file</h3>
+<ol type="1">
+<li>Go to part design and use the shape builder. then create face from
+edges for planar surfaces and shell from faces for curved surfaces.</li>
+<li>export each to .ast</li>
+<li>rename to .stl</li>
+<li>edit file and give proper ‘solid’ and ‘end solid’ name</li>
+</ol>
+<h2 id="z-axis-in-cad-programs-freecad-vs-paraview">Z-axis in CAD
+programs: FreeCAD vs Paraview</h2>
+<p>Extrude (or pad) of an object in z direction, goes inside the screen
+in Paraview but comes out of the screen in FreeCAD. Very confusing!</p>
+<p>If you already sketched the whole thing you have to rotate the whole
+thing with respect to y axis 180 degrees.</p>
 <hr color="white" style="margin: 20px auto;" />
 </body>
 </html>

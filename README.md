@@ -639,6 +639,23 @@ the `degree` to `-90`. Finally export it and view the result in paraview.
 Not sure how it can be done in FreeCAD yet. As a workaround, export the model to stl/obj and open it
 with ParaView and in the properties panel see the span of x, y and z of the geometry.
 
+## Surface Extraction Workflow
+
+### when you have fcstd file
+
+1. Go to part design and use the shape builder. then create face from edges for planar surfaces and
+   shell from faces for curved surfaces.
+2. export each to .ast
+3. rename to .stl
+4. edit file and give proper 'solid' and 'end solid' name
+
+## Z-axis in CAD programs: FreeCAD vs Paraview
+
+Extrude (or pad) of an object in z direction, goes inside the screen in Paraview but comes out of the screen in FreeCAD. Very confusing!
+
+If you already sketched the whole thing you have to rotate the whole thing with respect to y axis 180 degrees.
+
+
 
 <hr color="white" style="margin: 20px auto;" />
 
